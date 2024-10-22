@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3372686923
+    locked: 0
+  - name: Foreground
+    uniqueID: 2449058701
+    locked: 0
+  - name: Items
+    uniqueID: 1584754057
+    locked: 0
+  - name: Play
+    uniqueID: 3830782445
+    locked: 0
+  - name: New Layer 5
+    uniqueID: 841595297
+    locked: 0
