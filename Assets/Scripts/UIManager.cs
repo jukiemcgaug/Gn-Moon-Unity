@@ -9,7 +9,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI clueText;
     [SerializeField] private TextMeshProUGUI timeText;
 
-    private float totalTime = 20;
+    private float seconds = 0;
+    private int secondsInt;
+    private string secondsString;
+    private int minutes = 2;
+    private string minutesString;
+
+    private bool timeOut = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,8 +26,31 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        totalTime -= Time.deltaTime;
-        timeText.text = "" + totalTime;
+        if (!timeOut)
+        {
+            Timer();
+        } 
+    }
+
+    public void Timer() 
+    {
+        secondsInt = (int)(seconds -= Time.deltaTime);
+        secondsString = secondsInt.ToString("00");
+        minutesString = minutes.ToString("00");
+
+        if (secondsInt <= 0)
+        {
+            if (minutes == 0)
+            {
+                timeOut = true;
+                timeText.text = "you lose";
+                return;
+            }
+            seconds = 60;
+            minutes--;
+        }
+
+        timeText.text = minutesString + ":" + secondsString;
     }
 
     public void DisplayClue (string message)

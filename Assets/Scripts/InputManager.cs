@@ -22,6 +22,25 @@ public class InputManager : MonoBehaviour
     [SerializeField] GameObject input3;
     [SerializeField] GameObject input4;
 
+    private bool goodnightBalloon = false;
+    private bool goodnightCows = false;
+    private bool goodnightBears = false;
+    private bool goodnightKittens = false;
+    private bool goodnightMittens = false;
+    private bool goodnightMouse = false;
+    private bool goodnightComb = false;
+    private bool goodnightBrush = false;
+    private bool goodnightMoon = false;
+    private bool goodnightLight = false;
+    private bool goodnightClock = false;
+    private bool goodnightSock = false;
+    private bool goodnightMush = false;
+    private bool goodnightHouse = false;
+    private bool goodnightStars = false;
+    private bool goodnightPhone = false;
+
+    bool[] goodnights = new bool[16];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,12 +48,33 @@ public class InputManager : MonoBehaviour
         hInputs[1] = hush2;
         hInputs[2] = hush3;
         hInputs[3] = hush4;
+
+        goodnights[0] = goodnightBalloon;
+        goodnights[1] = goodnightCows;
+        goodnights[2] = goodnightBears;
+        goodnights[3] = goodnightKittens;
+        goodnights[4] = goodnightMittens;
+        goodnights[5] = goodnightMouse;
+        goodnights[6] = goodnightComb;
+        goodnights[7] = goodnightBrush;
+        goodnights[8] = goodnightMoon;
+        goodnights[9] = goodnightLight;
+        goodnights[10] = goodnightClock;
+        goodnights[11] = goodnightSock;
+        goodnights[12] = goodnightMush;
+        goodnights[13] = goodnightHouse;
+        goodnights[14] = goodnightStars;
+        goodnights[15] = goodnightPhone;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (CheckHush() && CheckGoodnights())
+        {
+            isOpen = true;
+        }
     }
 
     public void inputH1()
@@ -83,18 +123,124 @@ public class InputManager : MonoBehaviour
             hushInput += hInputs[i];
         }
 
-        checkHush();
+        CheckHush();
 
     }
 
-    private void checkHush()
+    private bool CheckHush()
     {
         if (string.Equals(hushInput, "hush"))
         {
-            isOpen = true;
-        } else
+            return true;
+        } 
+        return false;
+    }
+
+    private bool CheckGoodnights()
+    {
+        for (int i = 0; i < goodnights.Length; i++)
         {
-            isOpen = false;
+            if (goodnights[i] == false)
+            {
+                return false;
+            }
         }
+        return true;
+    }
+
+    public void GNBalloon ()
+    {
+        goodnightBalloon = true;
+        goodnights[0] = goodnightBalloon;
+    }
+
+    public void GNCows()
+    {
+        goodnightCows = true;
+        goodnights[1] = goodnightCows;
+    }
+
+    public void GNBears()
+    {
+        goodnightBears = true;
+        goodnights[2] = goodnightBears;
+    }
+
+    public void GNKittens()
+    {
+        goodnightKittens = true;
+        goodnights[3] = goodnightKittens;
+    }
+
+    public void GNMittens()
+    {
+        goodnightMittens = true;
+        goodnights[4] = goodnightMittens;
+    }
+
+    public void GNMouse()
+    {
+        goodnightMouse = true;
+        goodnights[5] = goodnightMouse;
+    }
+
+    public void GNComb()
+    {
+        goodnightComb = true;
+        goodnights[6] = goodnightComb;
+    }
+
+    public void GNBrush()
+    {
+        goodnightBrush = true;
+        goodnights[7] = goodnightBrush;
+    }
+
+    public void GNMoon()
+    {
+        goodnightMoon = true;
+        goodnights[8] = goodnightMoon;
+    }
+
+    public void GNLight()
+    {
+        goodnightLight = true;
+        goodnights[9] = goodnightLight;
+    }
+
+    public void GNClock()
+    {
+        goodnightClock = true;
+        goodnights[10] = goodnightClock;
+    }
+
+    public void GNSock()
+    {
+        goodnightSock = true;
+        goodnights[11] = goodnightSock;
+    }
+
+    public void GNMush()
+    {
+        goodnightMush = true;
+        goodnights[12] = goodnightMush;
+    }
+
+    public void GNHouse()
+    {
+        goodnightHouse = true;
+        goodnights[13] = goodnightHouse;
+    }
+
+    public void GNStars()
+    {
+        goodnightStars = true;
+        goodnights[14] = goodnightStars;
+    }
+
+    public void GNPhone()
+    {
+        goodnightPhone = true;
+        goodnights[15] = goodnightPhone;
     }
 }
