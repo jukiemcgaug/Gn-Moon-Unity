@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public float minPos;
     public float maxPos;
 
+    public bool canInteract = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,37 +31,39 @@ public class PlayerController : MonoBehaviour
             gameObject.transform.position.y
             );
 
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
+        if (canInteract) { 
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
 
-            Vector2 newPos = new Vector2(
-                gameObject.transform.position.x + speed * Time.deltaTime,
-                gameObject.transform.position.y
-                );
-            if (gameObject.transform.position.x + speed * Time.deltaTime >= maxPos)
-            {
-                gameObject.transform.position = max;
-            }
-            else
-            {
-                gameObject.transform.position = newPos;
-            }
+                Vector2 newPos = new Vector2(
+                    gameObject.transform.position.x + speed * Time.deltaTime,
+                    gameObject.transform.position.y
+                    );
+                if (gameObject.transform.position.x + speed * Time.deltaTime >= maxPos)
+                {
+                    gameObject.transform.position = max;
+                }
+                else
+                {
+                    gameObject.transform.position = newPos;
+                }
 
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-
-            Vector2 newPos = new Vector2(
-                gameObject.transform.position.x - speed * Time.deltaTime,
-                gameObject.transform.position.y
-                );
-            if (gameObject.transform.position.x - speed * Time.deltaTime <= minPos)
-            {
-                gameObject.transform.position = min;
             }
-            else
+            if (Input.GetKey(KeyCode.LeftArrow))
             {
-                gameObject.transform.position = newPos;
+
+                Vector2 newPos = new Vector2(
+                    gameObject.transform.position.x - speed * Time.deltaTime,
+                    gameObject.transform.position.y
+                    );
+                if (gameObject.transform.position.x - speed * Time.deltaTime <= minPos)
+                {
+                    gameObject.transform.position = min;
+                }
+                else
+                {
+                    gameObject.transform.position = newPos;
+                }
             }
         }
     }

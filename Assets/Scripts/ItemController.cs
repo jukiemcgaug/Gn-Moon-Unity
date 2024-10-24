@@ -8,6 +8,7 @@ public class ItemController : MonoBehaviour
     [SerializeField] private string objectName;
     [SerializeField] private GameObject panel;
 
+    [SerializeField] private PlayerController player;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,7 @@ public class ItemController : MonoBehaviour
             if (hit.collider != null && hit.collider.gameObject.name == objectName)
             {
 
-                if (!panel.activeSelf)
+                if (player.canInteract)
                 {
                     ChangePanel();
                 }
@@ -38,6 +39,8 @@ public class ItemController : MonoBehaviour
 
     public void ChangePanel ()
     {
+        player.canInteract = (!player.canInteract);
+
         panel.SetActive(!panel.activeSelf);
     }
 }
