@@ -7,8 +7,10 @@ public class PlayerController : MonoBehaviour
 {
 
     public int speed;
-    public float minPos;
-    public float maxPos;
+    public float minXPos;
+    public float maxXPos;
+    public float minYPos;
+    public float maxYPos;
 
     public bool canInteract = true;
 
@@ -21,27 +23,36 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 min = new Vector2(
-            minPos,
+        Vector2 minX = new Vector2(
+            minXPos,
             gameObject.transform.position.y
             );
 
-        Vector2 max = new Vector2(
-            maxPos,
+        Vector2 maxX = new Vector2(
+            maxXPos,
             gameObject.transform.position.y
+            );
+
+        Vector2 minY = new Vector2(
+            gameObject.transform.position.x,
+            minYPos
+            );
+
+        Vector2 maxY = new Vector2(
+            gameObject.transform.position.x,
+            maxYPos
             );
 
         if (canInteract) { 
             if (Input.GetKey(KeyCode.RightArrow))
             {
-
                 Vector2 newPos = new Vector2(
                     gameObject.transform.position.x + speed * Time.deltaTime,
                     gameObject.transform.position.y
                     );
-                if (gameObject.transform.position.x + speed * Time.deltaTime >= maxPos)
+                if (gameObject.transform.position.x + speed * Time.deltaTime >= maxXPos)
                 {
-                    gameObject.transform.position = max;
+                    gameObject.transform.position = maxX;
                 }
                 else
                 {
@@ -51,14 +62,43 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-
                 Vector2 newPos = new Vector2(
                     gameObject.transform.position.x - speed * Time.deltaTime,
                     gameObject.transform.position.y
                     );
-                if (gameObject.transform.position.x - speed * Time.deltaTime <= minPos)
+                if (gameObject.transform.position.x - speed * Time.deltaTime <= minXPos)
                 {
-                    gameObject.transform.position = min;
+                    gameObject.transform.position = minX;
+                }
+                else
+                {
+                    gameObject.transform.position = newPos;
+                }
+            }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                Vector2 newPos = new Vector2(
+                    gameObject.transform.position.x,
+                    gameObject.transform.position.y - speed * Time.deltaTime
+                    );
+                if (gameObject.transform.position.y - speed * Time.deltaTime <= minYPos)
+                {
+                    gameObject.transform.position = minY;
+                }
+                else
+                {
+                    gameObject.transform.position = newPos;
+                }
+            }
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                Vector2 newPos = new Vector2(
+                    gameObject.transform.position.x,
+                    gameObject.transform.position.y + speed * Time.deltaTime
+                    );
+                if (gameObject.transform.position.y + speed * Time.deltaTime >= maxYPos)
+                {
+                    gameObject.transform.position = maxY;
                 }
                 else
                 {
