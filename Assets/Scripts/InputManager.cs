@@ -6,12 +6,16 @@ using TMPro;
 public class InputManager : MonoBehaviour
 {
 
-    private string hush1;
-    private string hush2;
-    private string hush3;
-    private string hush4;
+    private string hush1 = "";
+    private string hush2 = "";
+    private string hush3 = "";
+    private string hush4 = "";
+
+    string[] hInputs = new string[4];
 
     private string hushInput;
+
+    private bool isOpen = false;
 
     [SerializeField] GameObject input1;
     [SerializeField] GameObject input2;
@@ -21,7 +25,10 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        hInputs[0] = hush1;
+        hInputs[1] = hush2;
+        hInputs[2] = hush3;
+        hInputs[3] = hush4;
     }
 
     // Update is called once per frame
@@ -33,30 +40,61 @@ public class InputManager : MonoBehaviour
     public void inputH1()
     {
         hush1 = input1.GetComponent<TMP_InputField>().text;
+        hInputs[0] = hush1;
         inputHush();
     }
 
     public void inputH2()
     {
         hush2 = input2.GetComponent<TMP_InputField>().text;
+        hInputs[1] = hush2;
         inputHush();
     }
 
     public void inputH3()
     {
         hush3 = input3.GetComponent<TMP_InputField>().text;
+        hInputs[2] = hush3;
         inputHush();
     }
 
     public void inputH4()
     {
         hush4 = input4.GetComponent<TMP_InputField>().text;
+        hInputs[3] = hush4;
         inputHush();
     }
 
     public void inputHush()
     {
-        hushInput = "" + hush1 + hush2 + hush3 + hush4;
-        Debug.Log(hushInput);
+
+        for (int i = 0; i < hInputs.Length; i++)
+        {
+            if (hInputs[i] == "")
+            {
+                return;
+            }
+        }
+
+        hushInput = "";
+
+        for (int i = 0; i < hInputs.Length; i++)
+        {
+            hushInput += hInputs[i];
+        }
+
+        checkHush();
+
+    }
+
+    private void checkHush()
+    {
+        if (string.Equals(hushInput, "hush"))
+        {
+            isOpen = true;
+        } else
+        {
+            isOpen = false;
+        }
     }
 }
