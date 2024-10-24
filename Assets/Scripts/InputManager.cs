@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class InputManager : MonoBehaviour
 {
@@ -74,6 +75,7 @@ public class InputManager : MonoBehaviour
         if (CheckHush() && CheckGoodnights())
         {
             isOpen = true;
+            SceneManager.LoadScene("WinCutScene1");
         }
     }
 
