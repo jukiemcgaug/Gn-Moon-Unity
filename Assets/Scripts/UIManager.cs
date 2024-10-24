@@ -29,11 +29,6 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void ChangePanel(GameObject panel)
-    {
-        panel.SetActive(!panel.activeSelf);
-    }
-
     private IEnumerator ClearText ()
     {
         yield return new WaitForSeconds(2);
