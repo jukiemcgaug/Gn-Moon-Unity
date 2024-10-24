@@ -487,8 +487,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1584754057
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e202c00312d6240c994550fd3bea0513, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -571,8 +571,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -922280373
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cd4a6475dc0c340ab89df21674fca710, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -833,9 +833,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -464184851
+  m_SortingLayer: 4
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f1c6499f477b1419f918357cb4e44d3d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -876,6 +876,7 @@ GameObject:
   - component: {fileID: 1064280822}
   - component: {fileID: 1064280826}
   - component: {fileID: 1064280827}
+  - component: {fileID: 1064280828}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -979,7 +980,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad9312c1ec6b443008d25f2bce1b51fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balloonPanel: {fileID: 761915941}
+  objectName: 
+  panel: {fileID: 0}
 --- !u!114 &1064280827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -993,6 +995,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clueText: {fileID: 1446395075}
+--- !u!114 &1064280828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064280821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad9312c1ec6b443008d25f2bce1b51fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: 
+  panel: {fileID: 0}
 --- !u!1 &1446395074
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,8 +1198,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1584754057
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4b52e8a1645a6480f9154bb32450c5ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1290,6 +1306,7 @@ GameObject:
   - component: {fileID: 1791649086}
   - component: {fileID: 1791649088}
   - component: {fileID: 1791649087}
+  - component: {fileID: 1791649089}
   m_Layer: 5
   m_Name: balloonZoomed
   m_TagString: Untagged
@@ -1354,6 +1371,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1791649085}
   m_CullTransparentMesh: 1
+--- !u!114 &1791649089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791649085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad9312c1ec6b443008d25f2bce1b51fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: balloonZoomed
+  panel: {fileID: 761915941}
 --- !u!1 &1949050551
 GameObject:
   m_ObjectHideFlags: 0
@@ -1588,7 +1619,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad9312c1ec6b443008d25f2bce1b51fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balloonPanel: {fileID: 761915941}
+  objectName: balloon
+  panel: {fileID: 761915941}
 --- !u!114 &2138622118
 MonoBehaviour:
   m_ObjectHideFlags: 0

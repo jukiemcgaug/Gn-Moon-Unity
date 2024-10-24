@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Balloon : MonoBehaviour
+public class ItemController : MonoBehaviour
 {
 
-    [SerializeField] private GameObject balloonPanel;
+    [SerializeField] private string objectName;
+    [SerializeField] private GameObject panel;
 
 
     // Start is called before the first frame update
@@ -22,12 +23,21 @@ public class Balloon : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
 
-            if (hit.collider != null && hit.collider.gameObject.name == "balloon")
+            if (hit.collider != null && hit.collider.gameObject.name == objectName)
             {
-                balloonPanel.SetActive(true);
+
+                if (!panel.activeSelf)
+                {
+                    ChangePanel();
+                }
 
             }
 
         }
+    }
+
+    public void ChangePanel ()
+    {
+        panel.SetActive(!panel.activeSelf);
     }
 }
