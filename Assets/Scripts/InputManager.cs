@@ -23,6 +23,10 @@ public class InputManager : MonoBehaviour
     [SerializeField] GameObject input3;
     [SerializeField] GameObject input4;
 
+    [SerializeField] PlayerController player;
+    public static float finalX;
+    public static float finalY;
+
     private bool goodnightBalloon = false;
     private bool goodnightCows = false;
     private bool goodnightBears = false;
@@ -72,10 +76,12 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CheckHush() && CheckGoodnights())
+        if (CheckHush())
         {
             isOpen = true;
-            SceneManager.LoadScene("WinCutScene1");
+            finalX = player.transform.position.x;
+            finalY = player.transform.position.y;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
         }
     }
 

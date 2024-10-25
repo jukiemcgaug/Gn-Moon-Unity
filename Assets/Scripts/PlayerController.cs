@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     public bool canInteract = true;
 
+    public Vector2 finalPos;
+
     // Start is called before the first frame update
     void Start()
     {

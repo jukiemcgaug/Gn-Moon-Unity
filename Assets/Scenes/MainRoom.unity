@@ -771,6 +771,7 @@ MonoBehaviour:
   input2: {fileID: 532299461}
   input3: {fileID: 1720772390}
   input4: {fileID: 6512860}
+  player: {fileID: 862554746}
 --- !u!1 &348911829
 GameObject:
   m_ObjectHideFlags: 0
@@ -1980,6 +1981,7 @@ MonoBehaviour:
   minYPos: -15.6
   maxYPos: -1.7
   canInteract: 1
+  finalPos: {x: 0, y: 0}
 --- !u!212 &862554747
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2041,7 +2043,7 @@ Transform:
   m_GameObject: {fileID: 862554745}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.7, y: -15.6, z: 0}
+  m_LocalPosition: {x: 0.8, y: -14.4, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
