@@ -76,7 +76,7 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CheckHush())
+        if (CheckHush() && CheckGoodnights())
         {
             isOpen = true;
             finalX = player.transform.position.x;
