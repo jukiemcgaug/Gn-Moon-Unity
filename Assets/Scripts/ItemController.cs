@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class ItemController : MonoBehaviour
 {
@@ -10,10 +11,12 @@ public class ItemController : MonoBehaviour
 
     [SerializeField] private PlayerController player;
 
+    private PostProcessVolume ppVolume;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
     }
 
     // Update is called once per frame
@@ -41,6 +44,7 @@ public class ItemController : MonoBehaviour
     {
         player.canInteract = (!player.canInteract);
 
+        ppVolume.enabled = !ppVolume.enabled;
         panel.SetActive(!panel.activeSelf);
     }
 }
