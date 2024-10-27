@@ -16,8 +16,6 @@ public class InputManager : MonoBehaviour
 
     private string hushInput;
 
-    private bool isOpen = false;
-
     [SerializeField] GameObject input1;
     [SerializeField] GameObject input2;
     [SerializeField] GameObject input3;
@@ -78,7 +76,6 @@ public class InputManager : MonoBehaviour
     {
         if (CheckHush() && CheckGoodnights())
         {
-            isOpen = true;
             finalX = player.transform.position.x;
             finalY = player.transform.position.y;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
@@ -146,6 +143,12 @@ public class InputManager : MonoBehaviour
 
     private bool CheckGoodnights()
     {
+        /*
+        if (goodnights[0] == true)
+        {
+            return true;
+        }
+        */
         for (int i = 0; i < goodnights.Length; i++)
         {
             if (goodnights[i] == false)
