@@ -12,7 +12,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject cowPanel;
     [SerializeField] private TextMeshProUGUI runText;
     [SerializeField] private GameObject cowButton;
-    [SerializeField] private GameObject backButton;
+    [SerializeField] private GameObject backButtonCow;
+
+    [SerializeField] private GameObject bearPanel;
+    [SerializeField] private TextMeshProUGUI awakeText;
+    [SerializeField] private GameObject bearButton;
+    [SerializeField] private GameObject backButtonBear;
 
     private float seconds = 0;
     private int secondsInt;
@@ -39,6 +44,11 @@ public class UIManager : MonoBehaviour
         if (cowPanel.activeSelf)
         {
             StartCoroutine(RunText());
+        }
+
+        if (bearPanel.activeSelf)
+        {
+            StartCoroutine(AwakeText());
         }
     }
 
@@ -95,6 +105,43 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSeconds(2);
         cowButton.SetActive(true);
-        backButton.SetActive(true);
+        backButtonCow.SetActive(true);
+    }
+
+    private IEnumerator AwakeText()
+    {
+        awakeText.text = "";
+        awakeText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(1);
+        awakeText.text = "s";
+
+        yield return new WaitForSeconds(1);
+        awakeText.text = "st";
+
+        yield return new WaitForSeconds(1);
+        awakeText.text = "sta";
+
+        yield return new WaitForSeconds(1);
+        awakeText.text = "stay";
+
+        yield return new WaitForSeconds(1);
+        awakeText.text = "stay a";
+
+        yield return new WaitForSeconds(1);
+        awakeText.text = "stay aw";
+
+        yield return new WaitForSeconds(1);
+        awakeText.text = "stay awa";
+
+        yield return new WaitForSeconds(1);
+        awakeText.text = "stay awak";
+
+        yield return new WaitForSeconds(1);
+        awakeText.text = "stay awake";
+
+        yield return new WaitForSeconds(1);
+        bearButton.SetActive(true);
+        backButtonBear.SetActive(true);
     }
 }
