@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject cowPanel;
     [SerializeField] private TextMeshProUGUI runText;
     [SerializeField] private GameObject cowButton;
+    [SerializeField] private GameObject backButton;
 
     private float seconds = 0;
     private int secondsInt;
@@ -24,7 +25,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        runText.text = "";
+        
     }
 
     // Update is called once per frame
@@ -80,7 +81,7 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator RunText ()
     {
-        
+        runText.text = "";
         runText.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(2);
@@ -94,5 +95,6 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSeconds(2);
         cowButton.SetActive(true);
+        backButton.SetActive(true);
     }
 }
