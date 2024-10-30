@@ -16,6 +16,8 @@ public class InputManager : MonoBehaviour
 
     private string hushInput;
 
+    private string phoneInput = "";
+
     [SerializeField] GameObject input1;
     [SerializeField] GameObject input2;
     [SerializeField] GameObject input3;
@@ -52,34 +54,78 @@ public class InputManager : MonoBehaviour
         hInputs[2] = hush3;
         hInputs[3] = hush4;
 
-        goodnights[0] = goodnightBalloon;
-        goodnights[1] = goodnightCows;
-        goodnights[2] = goodnightBears;
-        goodnights[3] = goodnightKittens;
-        goodnights[4] = goodnightMittens;
-        goodnights[5] = goodnightMouse;
-        goodnights[6] = goodnightComb;
-        goodnights[7] = goodnightBrush;
-        goodnights[8] = goodnightMoon;
-        goodnights[9] = goodnightLight;
-        goodnights[10] = goodnightClock;
-        goodnights[11] = goodnightSock;
-        goodnights[12] = goodnightMush;
-        goodnights[13] = goodnightHouse;
-        goodnights[14] = goodnightStars;
-        goodnights[15] = goodnightPhone;
+        for (int i = 0; i < goodnights.Length; i++)
+        {
+            goodnights[i] = false;
+        }
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (CheckHush() && CheckGoodnights())
+        if (inputHush() && CheckPhone() && CheckGoodnights())
         {
             finalX = player.transform.position.x;
             finalY = player.transform.position.y;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
         }
+
+    }
+
+    public void press0()
+    {
+        phoneInput += "0";
+    }
+
+    public void press1()
+    {
+        phoneInput += "1";
+    }
+
+    public void press2()
+    {
+        phoneInput += "2";
+    }
+
+    public void press3()
+    {
+        phoneInput += "3";
+    }
+
+    public void press4()
+    {
+        phoneInput += "4";
+    }
+
+    public void press5()
+    {
+        phoneInput += "5";
+    }
+
+    public void press6()
+    {
+        phoneInput += "6";
+    }
+
+    public void press7()
+    {
+        phoneInput += "7";
+    }
+
+    public void press8()
+    {
+        phoneInput += "8";
+    }
+
+    public void press9()
+    {
+        phoneInput += "9";
+    }
+
+    public void pressClear()
+    {
+        phoneInput = "";
     }
 
     public void inputH1()
@@ -110,14 +156,14 @@ public class InputManager : MonoBehaviour
         inputHush();
     }
 
-    public void inputHush()
+    public bool inputHush()
     {
 
         for (int i = 0; i < hInputs.Length; i++)
         {
             if (hInputs[i] == "")
             {
-                return;
+                return false; ;
             }
         }
 
@@ -128,7 +174,8 @@ public class InputManager : MonoBehaviour
             hushInput += hInputs[i];
         }
 
-        CheckHush();
+        Debug.Log("going to check");
+        return CheckHush();
 
     }
 
@@ -136,122 +183,115 @@ public class InputManager : MonoBehaviour
     {
         if (string.Equals(hushInput, "hush"))
         {
+            Debug.Log("checked true");
             return true;
-        } 
+        }
+        Debug.Log("checked false");
         return false;
     }
 
     private bool CheckGoodnights()
     {
-        /*
-        if (goodnights[0] == true)
-        {
-            return true;
-        }
-        */
         for (int i = 0; i < goodnights.Length; i++)
         {
             if (goodnights[i] == false)
             {
+                Debug.Log("a goodnight is false: " + i);
                 return false;
             }
         }
+        Debug.Log("goodnights true");
         return true;
+    }
+
+    private bool CheckPhone()
+    {
+        if (string.Equals(phoneInput, "44335557"))
+        {
+            Debug.Log("checked phone true");
+            return true;
+        }
+        Debug.Log("checked phone false");
+        return false;
     }
 
     public void GNBalloon ()
     {
-        goodnightBalloon = true;
-        goodnights[0] = goodnightBalloon;
+        goodnights[0] = true;
     }
 
     public void GNCows()
     {
-        goodnightCows = true;
-        goodnights[1] = goodnightCows;
+        goodnights[1] = true;
     }
 
     public void GNBears()
     {
-        goodnightBears = true;
-        goodnights[2] = goodnightBears;
+        goodnights[2] = true;
     }
 
     public void GNKittens()
     {
-        goodnightKittens = true;
-        goodnights[3] = goodnightKittens;
+        goodnights[3] = true;
     }
 
     public void GNMittens()
     {
-        goodnightMittens = true;
-        goodnights[4] = goodnightMittens;
+        goodnights[4] = true;
     }
 
     public void GNMouse()
     {
-        goodnightMouse = true;
-        goodnights[5] = goodnightMouse;
+        goodnights[5] = true;
     }
 
     public void GNComb()
     {
-        goodnightComb = true;
-        goodnights[6] = goodnightComb;
+        goodnights[6] = true;
     }
 
     public void GNBrush()
     {
-        goodnightBrush = true;
-        goodnights[7] = goodnightBrush;
+        goodnights[7] = true;
     }
 
     public void GNMoon()
     {
-        goodnightMoon = true;
-        goodnights[8] = goodnightMoon;
+        goodnights[8] = true;
     }
 
     public void GNLight()
     {
-        goodnightLight = true;
-        goodnights[9] = goodnightLight;
+        goodnights[9] = true;
     }
 
     public void GNClock()
     {
-        goodnightClock = true;
-        goodnights[10] = goodnightClock;
+        goodnights[10] = true;
     }
 
     public void GNSock()
     {
-        goodnightSock = true;
-        goodnights[11] = goodnightSock;
+        goodnights[11] = true;
     }
 
     public void GNMush()
     {
-        goodnightMush = true;
-        goodnights[12] = goodnightMush;
+        goodnights[12] = true;
     }
 
     public void GNHouse()
     {
-        goodnightHouse = true;
-        goodnights[13] = goodnightHouse;
+        goodnights[13] = true;
     }
 
     public void GNStars()
     {
-        goodnightStars = true;
-        goodnights[14] = goodnightStars;
+        goodnights[14] = true;
     }
 
     public void GNPhone()
     {
-        goodnightPhone = true;
-        goodnights[15] = goodnightPhone;
+        goodnights[15] = true;
     }
 }

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -26,6 +28,11 @@ public class UIManager : MonoBehaviour
     private string minutesString;
 
     private bool timeOut = false;
+    private bool paused = false;
+
+    [SerializeField] private PlayerController player;
+    [SerializeField] private PostProcessVolume ppvolume;
+    [SerializeField] private GameObject pausePanel;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +43,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!timeOut)
+        if (!timeOut && !paused)
         {
             Timer();
         }
@@ -63,8 +70,7 @@ public class UIManager : MonoBehaviour
             if (minutes == 0)
             {
                 timeOut = true;
-                timeText.text = "you lose";
-                return;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 5);
             }
             seconds = 60;
             minutes--;
@@ -143,5 +149,19 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         bearButton.SetActive(true);
         backButtonBear.SetActive(true);
+    }
+
+    public void pasue()
+    {
+        paused = !paused;
+
+        player.canInteract = (!player.canInteract);
+        ppvolume.enabled = !ppvolume.enabled;
+        pausePanel.SetActive(!pausePanel.activeSelf);
+    }
+
+    public void restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
