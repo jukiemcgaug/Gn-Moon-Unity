@@ -27,22 +27,11 @@ public class InputManager : MonoBehaviour
     public static float finalX;
     public static float finalY;
 
-    private bool goodnightBalloon = false;
-    private bool goodnightCows = false;
-    private bool goodnightBears = false;
-    private bool goodnightKittens = false;
-    private bool goodnightMittens = false;
-    private bool goodnightMouse = false;
-    private bool goodnightComb = false;
-    private bool goodnightBrush = false;
-    private bool goodnightMoon = false;
-    private bool goodnightLight = false;
-    private bool goodnightClock = false;
-    private bool goodnightSock = false;
-    private bool goodnightMush = false;
-    private bool goodnightHouse = false;
-    private bool goodnightStars = false;
-    private bool goodnightPhone = false;
+    [SerializeField] TextMeshProUGUI phoneText;
+    [SerializeField] TextMeshProUGUI hText;
+    [SerializeField] TextMeshProUGUI eText;
+    [SerializeField] TextMeshProUGUI lText;
+    [SerializeField] TextMeshProUGUI pText;
 
     bool[] goodnights = new bool[16];
 
@@ -64,7 +53,7 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inputHush() && CheckPhone() && CheckGoodnights())
+        if (CheckPhone() & inputHush() & CheckGoodnights())
         {
             finalX = player.transform.position.x;
             finalY = player.transform.position.y;
@@ -76,56 +65,67 @@ public class InputManager : MonoBehaviour
     public void press0()
     {
         phoneInput += "0";
+        phoneText.text = phoneInput;
     }
 
     public void press1()
     {
         phoneInput += "1";
+        phoneText.text = phoneInput;
     }
 
     public void press2()
     {
         phoneInput += "2";
+        phoneText.text = phoneInput;
     }
 
     public void press3()
     {
         phoneInput += "3";
+        phoneText.text = phoneInput;
     }
 
     public void press4()
     {
         phoneInput += "4";
+        phoneText.text = phoneInput;
     }
 
     public void press5()
     {
         phoneInput += "5";
+        phoneText.text = phoneInput;
     }
 
     public void press6()
     {
         phoneInput += "6";
+        phoneText.text = phoneInput;
     }
 
     public void press7()
     {
         phoneInput += "7";
+        phoneText.text = phoneInput;
     }
 
     public void press8()
     {
         phoneInput += "8";
+        phoneText.text = phoneInput;
     }
 
     public void press9()
     {
         phoneInput += "9";
+        phoneText.text = phoneInput;
     }
 
     public void pressClear()
     {
         phoneInput = "";
+        phoneText.text = phoneInput;
     }
 
     public void inputH1()
@@ -174,7 +174,6 @@ public class InputManager : MonoBehaviour
             hushInput += hInputs[i];
         }
 
-        Debug.Log("going to check");
         return CheckHush();
 
     }
@@ -183,10 +182,8 @@ public class InputManager : MonoBehaviour
     {
         if (string.Equals(hushInput, "hush"))
         {
-            Debug.Log("checked true");
             return true;
         }
-        Debug.Log("checked false");
         return false;
     }
 
@@ -196,11 +193,9 @@ public class InputManager : MonoBehaviour
         {
             if (goodnights[i] == false)
             {
-                Debug.Log("a goodnight is false: " + i);
                 return false;
             }
         }
-        Debug.Log("goodnights true");
         return true;
     }
 
@@ -208,10 +203,10 @@ public class InputManager : MonoBehaviour
     {
         if (string.Equals(phoneInput, "44335557"))
         {
-            Debug.Log("checked phone true");
+            StartCoroutine(printHelp());
             return true;
         }
-        Debug.Log("checked phone false");
+        clearHelp();
         return false;
     }
 
@@ -293,5 +288,32 @@ public class InputManager : MonoBehaviour
     public void GNPhone()
     {
         goodnights[15] = true;
+    }
+
+    private IEnumerator printHelp()
+    {
+        yield return new WaitForSeconds(1);
+
+        hText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(1);
+
+        eText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(1);
+
+        lText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(1);
+
+        pText.gameObject.SetActive(true);
+    }
+
+    private void clearHelp()
+    {
+        hText.gameObject.SetActive(false);
+        eText.gameObject.SetActive(false);
+        lText.gameObject.SetActive(false);
+        pText.gameObject.SetActive(false);
     }
 }

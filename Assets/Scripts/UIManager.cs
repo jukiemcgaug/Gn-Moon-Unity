@@ -34,6 +34,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private PostProcessVolume ppvolume;
     [SerializeField] private GameObject pausePanel;
 
+    [SerializeField] private TextMeshProUGUI text41;
+    [SerializeField] private TextMeshProUGUI text42;
+    [SerializeField] private TextMeshProUGUI text31;
+    [SerializeField] private TextMeshProUGUI text32;
+    [SerializeField] private TextMeshProUGUI text51;
+    [SerializeField] private TextMeshProUGUI text52;
+    [SerializeField] private TextMeshProUGUI text53;
+    [SerializeField] private TextMeshProUGUI text71;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -86,6 +95,46 @@ public class UIManager : MonoBehaviour
 
         StartCoroutine(ClearText());
 
+    }
+
+    public void show41()
+    {
+        text41.gameObject.SetActive(true);
+    }
+
+    public void show42()
+    {
+        text42.gameObject.SetActive(true);
+    }
+
+    public void show31()
+    {
+        text31.gameObject.SetActive(true);
+    }
+
+    public void show32()
+    {
+        text32.gameObject.SetActive(true);
+    }
+
+    public void show51()
+    {
+        text51.gameObject.SetActive(true);
+    }
+
+    public void show52()
+    {
+        text52.gameObject.SetActive(true);
+    }
+
+    public void show53()
+    {
+        text53.gameObject.SetActive(true);
+    }
+
+    public void show71()
+    {
+        text71.gameObject.SetActive(true);
     }
 
     private IEnumerator ClearText ()
