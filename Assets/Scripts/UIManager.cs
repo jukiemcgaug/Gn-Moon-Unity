@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
     private float seconds = 0;
     private int secondsInt;
     private string secondsString;
-    private int minutes = 2;
+    public int minutes;
     private string minutesString;
 
     private bool timeOut = false;
